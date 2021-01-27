@@ -1,3 +1,4 @@
+let body = document.body;
 let url = window.location.toString();
 			const getNameFromUrl = (url) => {
 			  let getUrl = url.split('=');
@@ -22,12 +23,12 @@ let url = window.location.toString();
 			
 					let name  = document.getElementsByTagName('a');
 					if (json.name != null) {
-						name[0].innerHTML = json.name;
+						(name[0]).innerHTML = json.name;
 					} else {
 						name.innerHTML = "_" ;
 					}
-					document.body.append(name);
-					name[0].href = json.html_url;
+					document.body.append(name[0]);
+					(name[0]).href = json.html_url;
 					
 					let bio = document.getElementsByTagName('p');
 					if (json.bio != null) {
@@ -35,7 +36,7 @@ let url = window.location.toString();
 					} else {
 						bio.innerHTML = "_";
 					}
-					document.body.append(bio);
+					document.body.append(bio[0]);
 					
 				})
 				.catch(err => alert('_'));
