@@ -39,5 +39,7 @@ let url = window.location.toString();
 					document.body.append(bio[0]);
 					
 				})
-				.catch(err => alert('_'));
+				.catch(err => alert('_')); 
+
+
 			
