@@ -16,6 +16,11 @@ let url = window.location.toString();
 					console.log(json.name);
 					console.log(json.bio);
 					console.log(json.html_url);
+
+					const date = document.getElementById('date');
+					let preloader = document.getElementById('preloader');
+					setTimeout(function() {
+						preloader.classList.add('hidden');}, 2000);
 			
 					let photo = new Image();
 					photo.src = json.avatar_url;
@@ -41,5 +46,25 @@ let url = window.location.toString();
 				})
 				.catch(err => alert('_')); 
 
+				let apiLink = requestUrl();
+
+				let currentDate = new Date();
+				
+				const getDate = new Promise((resolve, reject) => {
+					setTimeout(() => currentDate ? resolve(date.innerHTML = currentDate.toDateString()) : reject('не удалось получить'), 2000);
+				})
+
+				const renderCard = function(obj) {
+					userAva.src = obj.avatar_url;
+					userLink.innerHTML = obj.login;
+				}
+				fetch(apiLink)
+
+				  Promise.all([getDate])
+				  .then(() => fetch(apiLink))
+				  .then(res => res.json())
+				  .then(obj => newUser => Object.assign({}, obj))
+				  .then(newUser => renderCard(newUser))
+				  .catch(err => console.log(err));
 
 			
